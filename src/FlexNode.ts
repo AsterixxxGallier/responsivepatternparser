@@ -15,4 +15,11 @@ class FlexNode {
     constructor(name: string) {
         this.name = name;
     }
+
+    add(node: FlexNode, distance: number) {
+        this.linksStartingHere.forEach(link => link.distance += distance)
+        const link = new FlexLink(this, node, distance)
+        node.linksEndingHere.push(link)
+        this.linksStartingHere.push(link)
+    }
 }
