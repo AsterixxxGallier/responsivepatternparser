@@ -1,4 +1,6 @@
-class FlexNode {
+import {FlexLink} from "@App/FlexLink";
+
+export class FlexNode {
     /**
      * Name of this node. In the future, this field will be replaced.
      */
@@ -14,5 +16,12 @@ class FlexNode {
 
     constructor(name: string) {
         this.name = name;
+    }
+
+    add(node: FlexNode, distance: number) {
+        this.linksStartingHere.forEach(link => link.distance += distance)
+        const link = new FlexLink(this, node, distance)
+        node.linksEndingHere.push(link)
+        this.linksStartingHere.push(link)
     }
 }
