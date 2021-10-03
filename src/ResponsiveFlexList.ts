@@ -1,4 +1,4 @@
-import {FlexNode} from "@App/FlexNode";
+import {FlexNode} from "./FlexNode";
 
 export class ResponsiveFlexList {
     root: FlexNode | null = null

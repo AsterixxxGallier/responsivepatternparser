@@ -1,4 +1,4 @@
-import {FlexLink} from "@App/FlexLink";
+import {FlexLink} from "./FlexLink";
 
 export class FlexNode {
     /**
