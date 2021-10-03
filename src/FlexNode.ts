@@ -20,9 +20,7 @@ export class FlexNode {
 
     add(node: FlexNode, distance: number) {
         this.linksStartingHere.forEach(link => link.distance += distance)
-        const link = new FlexLink(this, node, distance, 1)
-        node.linksEndingHere.push(link)
-        this.linksStartingHere.push(link)
+        FlexLink.link(this, node, distance, 1)
     }
 
     toString() {

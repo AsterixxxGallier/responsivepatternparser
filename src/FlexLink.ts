@@ -16,4 +16,11 @@ export class FlexLink {
     toString() {
         return `${this.previous.name}${this.distance}${this.next.name}(${this.degree})`
     }
+
+    static link(a: FlexNode, b: FlexNode, distance: number, degree: number) {
+        const link = new FlexLink(a, b, distance, degree)
+        a.linksStartingHere.push(link)
+        b.linksEndingHere.push(link)
+        return link
+    }
 }
