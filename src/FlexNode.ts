@@ -1,4 +1,6 @@
-class FlexNode {
+import {FlexLink} from "@App/FlexLink";
+
+export class FlexNode {
     /**
      * Name of this node. In the future, this field will be replaced.
      */

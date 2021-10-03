@@ -1,4 +1,6 @@
-class FlexLink {
+import {FlexNode} from "@App/FlexNode";
+
+export class FlexLink {
     previous: FlexNode
     next: FlexNode
     distance: number
