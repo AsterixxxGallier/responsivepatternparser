@@ -24,4 +24,8 @@ export class FlexNode {
         node.linksEndingHere.push(link)
         this.linksStartingHere.push(link)
     }
+
+    toString() {
+        return `<${this.name} starting here: ${this.linksStartingHere} ending here: ${this.linksEndingHere}>`
+    }
 }

@@ -10,4 +10,8 @@ export class FlexLink {
         this.next = next;
         this.distance = distance;
     }
+
+    toString() {
+        return `${this.previous.name}${this.distance}${this.next.name}`
+    }
 }
