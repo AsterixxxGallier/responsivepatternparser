@@ -6,6 +6,10 @@ export class FlexNode {
 	 */
 	name: string
 	/**
+	 * The root of the structure this node is part of
+	 */
+	root: FlexNode
+	/**
 	 * A list of links that have {@link this} as {@link FlexLink.previous}
 	 */
 	linksStartingHere: FlexLink[] = []
@@ -14,12 +18,13 @@ export class FlexNode {
 	 */
 	linksEndingHere: FlexLink[] = []
 
-	constructor(name: string) {
+	constructor(name: string, root?: FlexNode) {
 		this.name = name;
+		this.root = root ?? this;
 	}
 
 
-	add(node: FlexNode, distance: number, root: FlexNode) {
+	add(node: FlexNode, distance: number, root: FlexNode = this.root) {
 		FlexLink.link(this, node, distance, 0)
 		for (let degree = 1; ; degree++) {
 			const firstLinkBack = node.linksEndingHere.find(link => link.degree == degree - 1)
@@ -33,6 +38,6 @@ export class FlexNode {
 	}
 
 	toString() {
-		return `<${this.name}; starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
+		return `<${this.name} of root ${this.root.name}; starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
 	}
 }
