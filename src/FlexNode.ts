@@ -1,4 +1,5 @@
 import {FlexLink} from "./FlexLink";
+import {FlexStructure} from "./FlexStructure";
 
 export class FlexNode {
 	/**
@@ -8,7 +9,7 @@ export class FlexNode {
 	/**
 	 * The root of the structure this node is part of
 	 */
-	root: FlexNode
+	structure: FlexStructure
 	/**
 	 * A list of links that have {@link this} as {@link FlexLink.previous}
 	 */
@@ -18,12 +19,12 @@ export class FlexNode {
 	 */
 	linksEndingHere: FlexLink[] = []
 
-	constructor(name: string, root?: FlexNode) {
+	constructor(name: string, structure?: FlexStructure) {
 		this.name = name;
-		this.root = root ?? this;
+		this.structure = structure ?? new FlexStructure(this, this);
 	}
 
-	add(node: FlexNode, distance: number, root: FlexNode = this.root) {
+	add(node: FlexNode, distance: number) {
 		FlexLink.link(this, node, distance, 0)
 		for (let degree = 1; ; degree++) {
 			const firstLinkBack = node.linksEndingHere.find(link => link.degree == degree - 1)
@@ -31,12 +32,13 @@ export class FlexNode {
 			const secondLinkBack = firstLinkBack.previous.linksEndingHere.find(link => link.degree == degree - 1)
 			if (secondLinkBack == undefined) break
 			const lastSameDegreeLink = secondLinkBack.previous.linksEndingHere.find(link => link.degree == degree)
-			if (lastSameDegreeLink == undefined && secondLinkBack.previous != root) break
+			if (lastSameDegreeLink == undefined && secondLinkBack.previous != this.structure.root) break
 			FlexLink.link(secondLinkBack.previous, node, firstLinkBack.distance + secondLinkBack.distance, degree)
 		}
 	}
 
 	toString() {
-		return `<${this.name} of root ${this.root.name}; starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
+		return `<${this.name} of structure ${this.structure.root.name}.->.${this.structure.root.name}; `
+			+ `starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
 	}
 }
