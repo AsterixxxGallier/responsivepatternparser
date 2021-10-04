@@ -23,7 +23,6 @@ export class FlexNode {
 		this.root = root ?? this;
 	}
 
-
 	add(node: FlexNode, distance: number, root: FlexNode = this.root) {
 		FlexLink.link(this, node, distance, 0)
 		for (let degree = 1; ; degree++) {
