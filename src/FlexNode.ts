@@ -18,10 +18,19 @@ export class FlexNode {
 		this.name = name;
 	}
 
-    add(node: FlexNode, distance: number) {
-        this.linksStartingHere.forEach(link => link.distance += distance)
-        FlexLink.link(this, node, distance, 1)
-    }
+
+	add(node: FlexNode, distance: number, root: FlexNode) {
+		FlexLink.link(this, node, distance, 0)
+		for (let degree = 1; ; degree++) {
+			const firstLinkBack = node.linksEndingHere.find(link => link.degree == degree - 1)
+			if (firstLinkBack == undefined) break
+			const secondLinkBack = firstLinkBack.previous.linksEndingHere.find(link => link.degree == degree - 1)
+			if (secondLinkBack == undefined) break
+			const lastSameDegreeLink = secondLinkBack.previous.linksEndingHere.find(link => link.degree == degree)
+			if (lastSameDegreeLink == undefined && secondLinkBack.previous != root) break
+			FlexLink.link(secondLinkBack.previous, node, firstLinkBack.distance + secondLinkBack.distance, degree)
+		}
+	}
 
 	toString() {
 		return `<${this.name}; starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
