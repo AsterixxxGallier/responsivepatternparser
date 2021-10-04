@@ -24,6 +24,6 @@ export class FlexNode {
     }
 
     toString() {
-        return `<${this.name} starting here: ${this.linksStartingHere} ending here: ${this.linksEndingHere}>`
+        return `<${this.name}; starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
     }
 }
