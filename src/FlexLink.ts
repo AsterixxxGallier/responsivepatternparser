@@ -20,6 +20,14 @@ export class FlexLink {
 		return link
 	}
 
+	static unlink(a: FlexNode, b: FlexNode): FlexLink | undefined {
+		const link = a.linksStartingHere.find(link => link.previous === a && link.next === b)
+		if (!link) return link
+		a.linksStartingHere.splice(a.linksStartingHere.indexOf(link), 1)
+		b.linksEndingHere.splice(b.linksEndingHere.indexOf(link), 1)
+		return link
+	}
+
 	toString() {
 		return `${this.previous.name}${this.distance}${this.next.name}(${this.degree})`
 	}
