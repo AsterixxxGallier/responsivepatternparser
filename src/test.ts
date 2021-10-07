@@ -230,15 +230,6 @@ test("FlexStructure.append", () => {
 	const i2 = new FlexNode("I")
 
 	const structure2 = new FlexStructure(a2, a2)
-	a2.structure = structure2
-	b2.structure = structure2
-	c2.structure = structure2
-	d2.structure = structure2
-	e2.structure = structure2
-	f2.structure = structure2
-	g2.structure = structure2
-	h2.structure = structure2
-	i2.structure = structure2
 
 	structure2.append(b2, 1)
 	structure2.append(c2, 1)
@@ -358,15 +349,6 @@ test("FlexStructure.add at end", () => {
 	const i2 = new FlexNode("I")
 
 	const structure2 = new FlexStructure(a2, a2)
-	a2.structure = structure2
-	b2.structure = structure2
-	c2.structure = structure2
-	d2.structure = structure2
-	e2.structure = structure2
-	f2.structure = structure2
-	g2.structure = structure2
-	h2.structure = structure2
-	i2.structure = structure2
 
 	structure2.add(b2, 1)
 	structure2.add(c2, 2)
