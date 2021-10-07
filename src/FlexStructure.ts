@@ -48,11 +48,12 @@ export class FlexStructure {
 
 	add(node: FlexNode, distanceFromFirst: number) {
 		const [previous, distanceFromPrevious] = this.first.traverse(distanceFromFirst)
-		if (previous.linksStartingHere.length == 0) {
-			console.assert(previous === this.last)
-			this.append(node, distanceFromPrevious)
+		if (!previous.linksStartingHere.some(link => link.next.structure == previous.structure)) {
+			console.assert(previous === previous.structure.last)
+			previous.structure.append(node, distanceFromPrevious)
 		} else {
-			const link = previous.linksStartingHere.find(link => link.degree == 0)!
+			const link = previous.linksStartingHere.find(link => link.next.structure == previous.structure && link.degree == 0)
+			if (!link) throw new Error("TODO") // TODO
 			previous.structure.splice(link, node, distanceFromPrevious)
 		}
 	}
