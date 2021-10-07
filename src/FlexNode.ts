@@ -11,30 +11,17 @@ export class FlexNode {
 	 */
 	structure: FlexStructure
 	/**
-	 * A list of links that have {@link this} as {@link FlexLink.previous}
+	 * An array of links that have {@link this} as {@link FlexLink.previous}
 	 */
 	linksStartingHere: FlexLink[] = []
 	/**
-	 * A list of links that have {@link this} as {@link FlexLink.next}
+	 * An array of links that have {@link this} as {@link FlexLink.next}
 	 */
 	linksEndingHere: FlexLink[] = []
 
 	constructor(name: string, structure?: FlexStructure) {
 		this.name = name;
 		this.structure = structure ?? new FlexStructure(this, this);
-	}
-
-	add(node: FlexNode, distance: number) {
-		FlexLink.link(this, node, distance, 0)
-		for (let degree = 1; ; degree++) {
-			const firstLinkBack = node.linksEndingHere.find(link => link.degree == degree - 1)
-			if (firstLinkBack == undefined) break
-			const secondLinkBack = firstLinkBack.previous.linksEndingHere.find(link => link.degree == degree - 1)
-			if (secondLinkBack == undefined) break
-			const lastSameDegreeLink = secondLinkBack.previous.linksEndingHere.find(link => link.degree == degree)
-			if (lastSameDegreeLink == undefined && secondLinkBack.previous != this.structure.first) break
-			FlexLink.link(secondLinkBack.previous, node, firstLinkBack.distance + secondLinkBack.distance, degree)
-		}
 	}
 
 	traverse(distance: number): [node: FlexNode, distanceToGo: number] {
