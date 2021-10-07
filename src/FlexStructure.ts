@@ -39,21 +39,6 @@ export class FlexStructure {
 		this.last = node
 	}
 
-	/**
-	 * Add a node to the start of this structure
-	 * @param node
-	 * @param distance
-	 */
-	prepend(node: FlexNode, distance: number) {
-		node.structure = this
-		let linkToPrevious: FlexLink | undefined = undefined
-		if (this.previous) linkToPrevious = FlexLink.unlink(this.previous, this.first)
-		FlexLink.link(node, this.first, distance, 0)
-		// TODO add shortcut links
-		if (this.previous) FlexLink.link(this.previous, node, linkToPrevious!.distance - distance, 0)
-		this.first = node
-	}
-
 	splice({degree, next, previous, distance}: FlexLink, node: FlexNode, distanceFromPrevious: number) {
 		console.assert(degree == 0)
 		node.structure = new FlexStructure(node, node, previous, next)
