@@ -32,7 +32,7 @@ export class FlexNode {
 			const secondLinkBack = firstLinkBack.previous.linksEndingHere.find(link => link.degree == degree - 1)
 			if (secondLinkBack == undefined) break
 			const lastSameDegreeLink = secondLinkBack.previous.linksEndingHere.find(link => link.degree == degree)
-			if (lastSameDegreeLink == undefined && secondLinkBack.previous != this.structure.root) break
+			if (lastSameDegreeLink == undefined && secondLinkBack.previous != this.structure.first) break
 			FlexLink.link(secondLinkBack.previous, node, firstLinkBack.distance + secondLinkBack.distance, degree)
 		}
 	}
@@ -55,7 +55,7 @@ export class FlexNode {
 	}
 
 	toString() {
-		return `<${this.name} of structure ${this.structure.root.name}.->.${this.structure.root.name}; `
+		return `<${this.name} of structure ${this.structure.first.name}.->.${this.structure.last.name}; `
 			+ `starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
 	}
 }
