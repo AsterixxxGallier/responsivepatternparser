@@ -7,6 +7,10 @@ export class FlexNode {
 	 */
 	name: string
 	/**
+	 * The root of the structure this node is part of
+	 */
+	structure: FlexStructure
+	/**
 	 * An array of links that have {@link this} as {@link FlexLink.previous}
 	 */
 	linksStartingHere: FlexLink[] = []
@@ -15,8 +19,9 @@ export class FlexNode {
 	 */
 	linksEndingHere: FlexLink[] = []
 
-	constructor(name: string) {
+	constructor(name: string, structure?: FlexStructure) {
 		this.name = name;
+		this.structure = structure ?? new FlexStructure(this, this);
 	}
 
 	traverse(distance: number): [node: FlexNode, distanceToGo: number] {
@@ -37,6 +42,7 @@ export class FlexNode {
 	}
 
 	toString() {
-		return `<${this.name}; starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
+		return `<${this.name} of structure ${this.structure.first.name}.->.${this.structure.last.name}; `
+			+ `starting here: ${this.linksStartingHere}; ending here: ${this.linksEndingHere}>`
 	}
 }
