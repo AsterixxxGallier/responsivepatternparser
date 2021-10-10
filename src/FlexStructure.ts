@@ -7,9 +7,9 @@ export class FlexStructure {
 	 */
 	height: number = 0
 	/**
-	 * The number of nodes in this structure
+	 * The number of zero-degree links in this structure
 	 */
-	length: number = 1
+	length: number = 0
 	/**
 	 * An array of all the nodes that should be linked with future nodes,
 	 * sorted in ascending order by the degree of the future link
@@ -36,7 +36,6 @@ export class FlexStructure {
 	 */
 	append(node: FlexNode, distance: number) {
 		node.structure = this
-		node.structuralIndex = this.length
 		let linkToNext: FlexLink | undefined = undefined
 		if (this.next) linkToNext = FlexLink.unlink(this.last, this.next)
 		/*
@@ -115,7 +114,7 @@ export class FlexStructure {
 		for (let degree = 0; degree <= this.height; degree++) {
 			this.nodesToLink[degree][1] += distance
 		}
-		const changes = this.last.structuralIndex ^ node.structuralIndex
+		const changes = this.length ^ ++this.length
 		for (let degree = 0; degree <= this.height; degree++) {
 			const mask = 1 << degree
 			const changed = !!(changes & mask)
@@ -130,7 +129,6 @@ export class FlexStructure {
 		}
 		if (this.next) FlexLink.link(node, this.next, linkToNext!.distance - distance, -1)
 		this.last = node
-		this.length++
 	}
 
 	splice({degree, next, previous, distance}: FlexLink, node: FlexNode, distanceFromPrevious: number) {
