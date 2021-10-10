@@ -26,6 +26,9 @@ export class FlexNode {
 		this.structure = structure ?? new FlexStructure(this, this);
 	}
 
+	/**
+	 * The link starting here with the lowest degree
+	 */
 	get linkToNext() {
 		if (this.linksStartingHere.length == 0)
 			return null
@@ -33,6 +36,9 @@ export class FlexNode {
 			return this.linksStartingHere[this.linksStartingHere.length - 1]
 	}
 
+	/**
+	 * The link ending here with the lowest degree
+	 */
 	get linkToPrevious() {
 		if (this.linksEndingHere.length == 0)
 			return null
@@ -40,6 +46,9 @@ export class FlexNode {
 			return this.linksEndingHere[this.linksEndingHere.length - 1]
 	}
 
+	/**
+	 * The link starting here with the lowest non-negative degree
+	 */
 	get linkToNextInStructure() {
 		const linkToNext = this.linkToNext
 		if (linkToNext == null)
@@ -52,6 +61,9 @@ export class FlexNode {
 			return this.linksStartingHere[this.linksStartingHere.length - 2]
 	}
 
+	/**
+	 * The link ending here with the lowest non-negative degree
+	 */
 	get linkToPreviousInStructure() {
 		const linkToPrevious = this.linkToPrevious
 		if (linkToPrevious == null)
