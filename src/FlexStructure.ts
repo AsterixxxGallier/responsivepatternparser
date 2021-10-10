@@ -52,7 +52,7 @@ export class FlexStructure {
 			console.assert(previous === previous.structure.last)
 			previous.structure.append(node, distanceFromPrevious)
 		} else {
-			const link = previous.linksStartingHere.find(link => link.next.structure == previous.structure && link.degree == 0)
+			const link = previous.linkToNextInStructure
 			if (!link) throw new Error("TODO") // TODO
 			previous.structure.splice(link, node, distanceFromPrevious)
 		}

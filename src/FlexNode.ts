@@ -68,12 +68,7 @@ export class FlexNode {
 		let distanceToGo = distance
 		let current: FlexNode = this
 		while (true) {
-			let longestLink: FlexLink | null = null
-			for (let link of current.linksStartingHere) {
-				if (link.distance <= distanceToGo)
-					if (longestLink == null || longestLink.distance < link.distance)
-						longestLink = link
-			}
+			const longestLink = current.linksStartingHere.find(link => link.distance <= distanceToGo)
 			if (longestLink == null)
 				return [current, distanceToGo]
 			distanceToGo -= longestLink.distance
