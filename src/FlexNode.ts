@@ -11,11 +11,13 @@ export class FlexNode {
 	 */
 	structure: FlexStructure
 	/**
-	 * An array of links that have {@link this} as {@link FlexLink.previous}
+	 * An array of links that have {@link this} as {@link FlexLink.previous},
+	 * sorted in descending order by degree (and thereby length)
 	 */
 	linksStartingHere: FlexLink[] = []
 	/**
-	 * An array of links that have {@link this} as {@link FlexLink.next}
+	 * An array of links that have {@link this} as {@link FlexLink.next},
+	 * sorted in descending order by degree (and thereby length)
 	 */
 	linksEndingHere: FlexLink[] = []
 

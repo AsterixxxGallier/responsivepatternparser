@@ -35,15 +35,15 @@ export class FlexStructure {
 			if (lastSameDegreeLink == undefined && secondLinkBack.previous != this.first) break
 			FlexLink.link(secondLinkBack.previous, node, firstLinkBack.distance + secondLinkBack.distance, degree)
 		}
-		if (this.next) FlexLink.link(node, this.next, linkToNext!.distance - distance, 0)
+		if (this.next) FlexLink.link(node, this.next, linkToNext!.distance - distance, -1)
 		this.last = node
 	}
 
 	splice({degree, next, previous, distance}: FlexLink, node: FlexNode, distanceFromPrevious: number) {
 		console.assert(degree == 0)
 		node.structure = new FlexStructure(node, node, previous, next)
-		FlexLink.link(previous, node, distanceFromPrevious, 0)
-		FlexLink.link(node, next, distance - distanceFromPrevious, 0)
+		FlexLink.link(previous, node, distanceFromPrevious, -1)
+		FlexLink.link(node, next, distance - distanceFromPrevious, -1)
 	}
 
 	add(node: FlexNode, distanceFromFirst: number) {
