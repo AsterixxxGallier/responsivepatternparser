@@ -16,17 +16,6 @@ test("FlexStructure.append", () => {
 	const h1 = new FlexNode("H")
 	const i1 = new FlexNode("I")
 
-	const structure1 = new FlexStructure(a1, i1)
-	a1.structure = structure1
-	b1.structure = structure1
-	c1.structure = structure1
-	d1.structure = structure1
-	e1.structure = structure1
-	f1.structure = structure1
-	g1.structure = structure1
-	h1.structure = structure1
-	i1.structure = structure1
-
 	// A
 
 	// add B
@@ -113,14 +102,14 @@ test("FlexStructure.append", () => {
 	structure2.append(i2, 1)
 	// endregion
 
-	expect(a1).toEqual(a2)
-	expect(b1).toEqual(b2)
-	expect(c1).toEqual(c2)
-	expect(d1).toEqual(d2)
-	expect(e1).toEqual(e2)
-	expect(f1).toEqual(f2)
-	expect(g1).toEqual(g2)
-	expect(h1).toEqual(h2)
+	expect(a2.linksStartingHere.map(link => link.toString())).toEqual(a1.linksStartingHere.map(link => link.toString()))
+	expect(b2.linksStartingHere.map(link => link.toString())).toEqual(b1.linksStartingHere.map(link => link.toString()))
+	expect(c2.linksStartingHere.map(link => link.toString())).toEqual(c1.linksStartingHere.map(link => link.toString()))
+	expect(d2.linksStartingHere.map(link => link.toString())).toEqual(d1.linksStartingHere.map(link => link.toString()))
+	expect(e2.linksStartingHere.map(link => link.toString())).toEqual(e1.linksStartingHere.map(link => link.toString()))
+	expect(f2.linksStartingHere.map(link => link.toString())).toEqual(f1.linksStartingHere.map(link => link.toString()))
+	expect(g2.linksStartingHere.map(link => link.toString())).toEqual(g1.linksStartingHere.map(link => link.toString()))
+	expect(h2.linksStartingHere.map(link => link.toString())).toEqual(h1.linksStartingHere.map(link => link.toString()))
 })
 
 test("FlexStructure.add at end", () => {
@@ -134,17 +123,6 @@ test("FlexStructure.add at end", () => {
 	const g1 = new FlexNode("G")
 	const h1 = new FlexNode("H")
 	const i1 = new FlexNode("I")
-
-	const structure1 = new FlexStructure(a1, i1)
-	a1.structure = structure1
-	b1.structure = structure1
-	c1.structure = structure1
-	d1.structure = structure1
-	e1.structure = structure1
-	f1.structure = structure1
-	g1.structure = structure1
-	h1.structure = structure1
-	i1.structure = structure1
 
 	// A
 
@@ -232,12 +210,12 @@ test("FlexStructure.add at end", () => {
 	structure2.add(i2, 8)
 	// endregion
 
-	expect(a1).toEqual(a2)
-	expect(b1).toEqual(b2)
-	expect(c1).toEqual(c2)
-	expect(d1).toEqual(d2)
-	expect(e1).toEqual(e2)
-	expect(f1).toEqual(f2)
-	expect(g1).toEqual(g2)
-	expect(h1).toEqual(h2)
+	expect(a2.linksStartingHere.map(link => link.toString())).toEqual(a1.linksStartingHere.map(link => link.toString()))
+	expect(b2.linksStartingHere.map(link => link.toString())).toEqual(b1.linksStartingHere.map(link => link.toString()))
+	expect(c2.linksStartingHere.map(link => link.toString())).toEqual(c1.linksStartingHere.map(link => link.toString()))
+	expect(d2.linksStartingHere.map(link => link.toString())).toEqual(d1.linksStartingHere.map(link => link.toString()))
+	expect(e2.linksStartingHere.map(link => link.toString())).toEqual(e1.linksStartingHere.map(link => link.toString()))
+	expect(f2.linksStartingHere.map(link => link.toString())).toEqual(f1.linksStartingHere.map(link => link.toString()))
+	expect(g2.linksStartingHere.map(link => link.toString())).toEqual(g1.linksStartingHere.map(link => link.toString()))
+	expect(h2.linksStartingHere.map(link => link.toString())).toEqual(h1.linksStartingHere.map(link => link.toString()))
 })
