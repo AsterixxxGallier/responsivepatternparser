@@ -7,11 +7,10 @@ export class FlexStructure {
 	previous: FlexNode | null
 	next: FlexNode | null
 
-	constructor(first: FlexNode, last: FlexNode, previous: FlexNode | null = null, next: FlexNode | null = null) {
-		this.first = first;
-		this.last = last;
-		first.structure = this
-		last.structure = this
+	constructor(node: FlexNode, previous: FlexNode | null = null, next: FlexNode | null = null) {
+		this.first = node;
+		this.last = node;
+		node.structure = this;
 		this.previous = previous;
 		this.next = next;
 	}
@@ -41,7 +40,7 @@ export class FlexStructure {
 
 	splice({degree, next, previous, distance}: FlexLink, node: FlexNode, distanceFromPrevious: number) {
 		console.assert(degree == 0)
-		node.structure = new FlexStructure(node, node, previous, next)
+		node.structure = new FlexStructure(node, previous, next)
 		FlexLink.link(previous, node, distanceFromPrevious, -1)
 		FlexLink.link(node, next, distance - distanceFromPrevious, -1)
 	}

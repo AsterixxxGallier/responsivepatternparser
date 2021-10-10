@@ -11,7 +11,7 @@ const g = new FlexNode("G")
 const h = new FlexNode("H")
 const i = new FlexNode("I")
 
-const structure = new FlexStructure(a, a)
+const structure = new FlexStructure(a)
 
 structure.add(c, 2)
 structure.add(b, 1)

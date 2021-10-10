@@ -23,7 +23,7 @@ export class FlexNode {
 
 	constructor(name: string, structure?: FlexStructure) {
 		this.name = name;
-		this.structure = structure ?? new FlexStructure(this, this);
+		this.structure = structure ?? new FlexStructure(this);
 	}
 
 	/**
