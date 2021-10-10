@@ -26,6 +26,44 @@ export class FlexNode {
 		this.structure = structure ?? new FlexStructure(this, this);
 	}
 
+	get linkToNext() {
+		if (this.linksStartingHere.length == 0)
+			return null
+		else
+			return this.linksStartingHere[this.linksStartingHere.length - 1]
+	}
+
+	get linkToPrevious() {
+		if (this.linksEndingHere.length == 0)
+			return null
+		else
+			return this.linksEndingHere[this.linksEndingHere.length - 1]
+	}
+
+	get linkToNextInStructure() {
+		const linkToNext = this.linkToNext
+		if (linkToNext == null)
+			return null
+		if (linkToNext.degree >= 0)
+			return linkToNext
+		if (this.linksStartingHere.length == 1)
+			return null
+		else
+			return this.linksStartingHere[this.linksStartingHere.length - 2]
+	}
+
+	get linkToPreviousInStructure() {
+		const linkToPrevious = this.linkToPrevious
+		if (linkToPrevious == null)
+			return null
+		if (linkToPrevious.degree >= 0)
+			return linkToPrevious
+		if (this.linksEndingHere.length == 1)
+			return null
+		else
+			return this.linksEndingHere[this.linksEndingHere.length - 2]
+	}
+
 	traverse(distance: number): [node: FlexNode, distanceToGo: number] {
 		let distanceToGo = distance
 		let current: FlexNode = this
