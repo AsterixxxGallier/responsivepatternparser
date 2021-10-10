@@ -20,6 +20,7 @@ export class FlexNode {
 	 * sorted in descending order by degree (and thereby length)
 	 */
 	linksEndingHere: FlexLink[] = []
+	structuralIndex: number = 0
 
 	constructor(name: string, structure?: FlexStructure) {
 		this.name = name;
