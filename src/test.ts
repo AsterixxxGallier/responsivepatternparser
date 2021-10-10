@@ -19,59 +19,59 @@ test("FlexStructure.append", () => {
 	// A
 
 	// add B
-	const ab1 = FlexLink.link(a1, b1, 1, 0)
+	FlexLink.link(a1, b1, 1, 0)
 
 	// A->B
 
 	// add C
-	const bc1 = FlexLink.link(b1, c1, 1, 0)
-	const ac1 = FlexLink.link(a1, c1, 2, 1)
+	FlexLink.link(b1, c1, 1, 0)
+	FlexLink.link(a1, c1, 2, 1)
 
 	// /--->\
 	// A->B->C
 
 	// add D
-	const cd1 = FlexLink.link(c1, d1, 1, 0)
+	FlexLink.link(c1, d1, 1, 0)
 
 	// /--->\
 	// A->B->C->D
 
 	// add E
-	const de1 = FlexLink.link(d1, e1, 1, 0)
-	const ce1 = FlexLink.link(c1, e1, 2, 1)
-	const ae1 = FlexLink.link(a1, e1, 4, 2)
+	FlexLink.link(d1, e1, 1, 0)
+	FlexLink.link(c1, e1, 2, 1)
+	FlexLink.link(a1, e1, 4, 2)
 
 	// /--------->\
 	// /--->\/--->\
 	// A->B->C->D->E
 
 	// add F
-	const ef1 = FlexLink.link(e1, f1, 1, 0)
+	FlexLink.link(e1, f1, 1, 0)
 
 	// /--------->\
 	// /--->\/--->\
 	// A->B->C->D->E->F
 
 	// add G
-	const fg1 = FlexLink.link(f1, g1, 1, 0)
-	const eg1 = FlexLink.link(e1, g1, 2, 1)
+	FlexLink.link(f1, g1, 1, 0)
+	FlexLink.link(e1, g1, 2, 1)
 
 	// /--------->\
 	// /--->\/--->\/--->\
 	// A->B->C->D->E->F->G
 
 	// add H
-	const gh1 = FlexLink.link(g1, h1, 1, 0)
+	FlexLink.link(g1, h1, 1, 0)
 
 	// /--------->\
 	// /--->\/--->\/--->\
 	// A->B->C->D->E->F->G->H
 
 	// add I
-	const hi1 = FlexLink.link(h1, i1, 1, 0)
-	const gi1 = FlexLink.link(g1, i1, 2, 1)
-	const ei1 = FlexLink.link(e1, i1, 4, 2)
-	const ai1 = FlexLink.link(a1, i1, 8, 3)
+	FlexLink.link(h1, i1, 1, 0)
+	FlexLink.link(g1, i1, 2, 1)
+	FlexLink.link(e1, i1, 4, 2)
+	FlexLink.link(a1, i1, 8, 3)
 
 	// /--------------------->\
 	// /--------->\/--------->\
@@ -127,59 +127,59 @@ test("FlexStructure.add at end", () => {
 	// A
 
 	// add B
-	const ab1 = FlexLink.link(a1, b1, 1, 0)
+	FlexLink.link(a1, b1, 1, 0)
 
 	// A->B
 
 	// add C
-	const bc1 = FlexLink.link(b1, c1, 1, 0)
-	const ac1 = FlexLink.link(a1, c1, 2, 1)
+	FlexLink.link(b1, c1, 1, 0)
+	FlexLink.link(a1, c1, 2, 1)
 
 	// /--->\
 	// A->B->C
 
 	// add D
-	const cd1 = FlexLink.link(c1, d1, 1, 0)
+	FlexLink.link(c1, d1, 1, 0)
 
 	// /--->\
 	// A->B->C->D
 
 	// add E
-	const de1 = FlexLink.link(d1, e1, 1, 0)
-	const ce1 = FlexLink.link(c1, e1, 2, 1)
-	const ae1 = FlexLink.link(a1, e1, 4, 2)
+	FlexLink.link(d1, e1, 1, 0)
+	FlexLink.link(c1, e1, 2, 1)
+	FlexLink.link(a1, e1, 4, 2)
 
 	// /--------->\
 	// /--->\/--->\
 	// A->B->C->D->E
 
 	// add F
-	const ef1 = FlexLink.link(e1, f1, 1, 0)
+	FlexLink.link(e1, f1, 1, 0)
 
 	// /--------->\
 	// /--->\/--->\
 	// A->B->C->D->E->F
 
 	// add G
-	const fg1 = FlexLink.link(f1, g1, 1, 0)
-	const eg1 = FlexLink.link(e1, g1, 2, 1)
+	FlexLink.link(f1, g1, 1, 0)
+	FlexLink.link(e1, g1, 2, 1)
 
 	// /--------->\
 	// /--->\/--->\/--->\
 	// A->B->C->D->E->F->G
 
 	// add H
-	const gh1 = FlexLink.link(g1, h1, 1, 0)
+	FlexLink.link(g1, h1, 1, 0)
 
 	// /--------->\
 	// /--->\/--->\/--->\
 	// A->B->C->D->E->F->G->H
 
 	// add I
-	const hi1 = FlexLink.link(h1, i1, 1, 0)
-	const gi1 = FlexLink.link(g1, i1, 2, 1)
-	const ei1 = FlexLink.link(e1, i1, 4, 2)
-	const ai1 = FlexLink.link(a1, i1, 8, 3)
+	FlexLink.link(h1, i1, 1, 0)
+	FlexLink.link(g1, i1, 2, 1)
+	FlexLink.link(e1, i1, 4, 2)
+	FlexLink.link(a1, i1, 8, 3)
 
 	// /--------------------->\
 	// /--------->\/--------->\
