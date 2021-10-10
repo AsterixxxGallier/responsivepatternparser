@@ -11,10 +11,10 @@ export class FlexStructure {
 	 */
 	length: number = 0
 	/**
-	 * An array of all the nodes that should be linked with future nodes,
+	 * An array of all the nodes that are planned to be linked with future nodes,
 	 * sorted in ascending order by the degree of the future link
 	 */
-	nodesToLink: [node: FlexNode, distance: number][] = []
+	plannedLinks: [node: FlexNode, distance: number][] = []
 	first: FlexNode
 	last: FlexNode
 	previous: FlexNode | null
@@ -26,7 +26,7 @@ export class FlexStructure {
 		node.structure = this;
 		this.previous = previous;
 		this.next = next;
-		this.nodesToLink = [[node, 0.0]]
+		this.plannedLinks = [[node, 0.0]]
 	}
 
 	/**
@@ -112,18 +112,18 @@ export class FlexStructure {
 		changedDegrees = 0..3
 		 */
 		for (let degree = 0; degree <= this.height; degree++) {
-			this.nodesToLink[degree][1] += distance
+			this.plannedLinks[degree][1] += distance
 		}
 		const changes = this.length ^ ++this.length
 		for (let degree = 0; degree <= this.height; degree++) {
 			const mask = 1 << degree
 			const changed = !!(changes & mask)
 			if (!changed) break
-			const [toLink, toLinkDistance] = this.nodesToLink[degree]
+			const [toLink, toLinkDistance] = this.plannedLinks[degree]
 			FlexLink.link(toLink, node, toLinkDistance, degree)
-			this.nodesToLink[degree] = [node, 0.0]
+			this.plannedLinks[degree] = [node, 0.0]
 			if (degree == this.height) {
-				this.nodesToLink.push([toLink, toLinkDistance])
+				this.plannedLinks.push([toLink, toLinkDistance])
 				this.height++
 			}
 		}
